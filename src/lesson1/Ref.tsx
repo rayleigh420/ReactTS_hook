@@ -1,7 +1,13 @@
 // Moi lan component re render thi tat ca cac bien ham trong component se duoc tao ra pham vi moi
 // Lesson1: useRef luu tham chieu cua mot bien hay mot ham ben ngoai
 
-import { ChangeEvent, ChangeEventHandler, useEffect, useRef, useState } from "react";
+import {
+  ChangeEvent,
+  ChangeEventHandler,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 const Ref = () => {
   const [count, setCount] = useState<number>(60);
@@ -9,10 +15,6 @@ const Ref = () => {
 
   const timeID = useRef<number>();
   const refInput = useRef<HTMLInputElement>(null);
-  
-  useEffect(() => {
-    
-  }, [num])
 
   const handleChangeInput = (e: ChangeEvent<HTMLInputElement | undefined>) => {
     setNum(e.target.value);
@@ -22,6 +24,8 @@ const Ref = () => {
     if (num) {
       setCount(parseInt(num));
       setNum("");
+      // Set focus with useRef
+      refInput.current?.focus();
     }
   };
 
@@ -37,8 +41,13 @@ const Ref = () => {
 
   return (
     <div>
-      <input type="text" onChange={handleChangeInput} ref={refInput} />
-      <button onClick={setCountStart}>Set</button>
+      <input
+        type="text"
+        onChange={handleChangeInput}
+        ref={refInput}
+        value={num}
+      />
+      <button onClick={setCountStart}>Set Time</button>
       <h1>{count}</h1>
       <button onClick={handleStart}>Start</button>
       <button onClick={handleStop}>Stop</button>
