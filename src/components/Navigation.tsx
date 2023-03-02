@@ -3,7 +3,14 @@ import { Link } from "react-router-dom";
 const Navigation = () => {
   return (
     <div>
-      <Link to="/ref">useRef</Link>
+      <ul>
+        <li>
+          <Link to="/useRef">useRef</Link>
+        </li>
+        <li>
+          <Link to="/memo">React.memo</Link>
+        </li>
+      </ul>
     </div>
   );
 };
