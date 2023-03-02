@@ -7,8 +7,12 @@ const Navigation = () => {
         <li>
           <Link to="/useRef">useRef</Link>
         </li>
+
         <li>
           <Link to="/memo">React.memo</Link>
+        </li>
+        <li>
+          <Link to="/callback">useCallback</Link>
         </li>
       </ul>
     </div>
