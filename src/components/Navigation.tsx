@@ -9,10 +9,13 @@ const Navigation = () => {
         </li>
 
         <li>
-          <Link to="/memo">React.memo</Link>
+          <Link to="/Rmemo">React.memo</Link>
         </li>
         <li>
           <Link to="/callback">useCallback</Link>
+        </li>
+        <li>
+          <Link to="/memo">useMemo</Link>
         </li>
       </ul>
     </div>

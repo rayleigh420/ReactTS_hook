@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Content from "../components/Content";
 
-const Memo = () => {
+const RMemo = () => {
   const [count, setCount] = useState<number>(60);
 
   return (
@@ -14,4 +14,4 @@ const Memo = () => {
   );
 };
 
-export default Memo;
+export default RMemo;

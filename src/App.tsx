@@ -3,8 +3,9 @@ import "./App.css";
 import Ref from "./lesson1/Ref";
 import { Routes, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
-import Memo from "./lesson2/Memo";
+import RMemo from "./lesson2/RMemo";
 import Callback from "./lesson3/Callback";
+import Memo from "./lesson4/Memo";
 
 function App() {
   return (
@@ -12,8 +13,9 @@ function App() {
       <Routes>
         <Route index element={<Navigation />} />
         <Route path="useRef" element={<Ref />} />
-        <Route path="memo" element={<Memo />} />
+        <Route path="Rmemo" element={<RMemo />} />
         <Route path="callback" element={<Callback />} />
+        <Route path="memo" element={<Memo />} />
       </Routes>
     </div>
   );
