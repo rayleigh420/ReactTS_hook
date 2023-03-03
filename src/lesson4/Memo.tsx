@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState, useMemo, useRef } from "react";
 
 interface Product {
   name: string;
@@ -7,34 +7,43 @@ interface Product {
 
 const Memo = () => {
   const [name, setName] = useState<string>("");
-  const [price, setPrice] = useState<number | null>(null);
-  const [product, setProduct] = useState<Product[]>([{}] as Product[]);
+  const [price, setPrice] = useState<string>();
+  const [product, setProduct] = useState<Product[]>();
+
+  const nameRef = useRef<HTMLInputElement>(null);
 
   const handleChangeName = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
 
   const handleChangePrice = (e: ChangeEvent<HTMLInputElement>) => {
-    setPrice(Number(e.target.value));
+    setPrice(e.target.value);
   };
 
   const handleAddProduct = () => {
-    // const prod = [...[product], {
-    //   name: name,
-    //   price: price
-    // }]
     setName("");
-    setPrice(null);
+    setPrice("");
+
     if (name.length > 0 && price) {
-      setProduct([
-        ...[product],
+      setProduct((prevProduct) => [
+        ...(prevProduct || []),
         {
           name: name,
-          price: price,
+          price: Number(price),
         },
-      ] as unknown as Product[]);
+      ]);
     }
+
+    nameRef.current?.focus();
   };
+
+  const total = useMemo(() => {
+    const result = product?.reduce((prev: number, curr: Product) => {
+      return prev + curr.price;
+    }, 0);
+
+    return result;
+  }, [product]);
 
   return (
     <div>
@@ -43,6 +52,7 @@ const Memo = () => {
         placeholder="Enter name product"
         onChange={handleChangeName}
         value={name}
+        ref={nameRef}
       />
       <br />
       <input
@@ -54,8 +64,16 @@ const Memo = () => {
       <br />
       <button onClick={handleAddProduct}>Add product</button>
       <br />
-      Total:
-      <p>{JSON.stringify(product)}</p>
+      Total: {total ? total : 0}
+      {/* <p>{JSON.stringify(product)}</p> */}
+      <ul>
+        {product &&
+          product.map((item, index) => (
+            <li key={index}>
+              {item.name} - {item.price}
+            </li>
+          ))}
+      </ul>
     </div>
   );
 };
