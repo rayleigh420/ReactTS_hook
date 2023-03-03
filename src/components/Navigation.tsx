@@ -17,6 +17,9 @@ const Navigation = () => {
         <li>
           <Link to="/memo">useMemo</Link>
         </li>
+        <li>
+          <Link to="/context">useContext</Link>
+        </li>
       </ul>
     </div>
   );
