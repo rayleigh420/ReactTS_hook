@@ -5,7 +5,7 @@ const Paragraph = () => {
   const { theme } = useContext(ThemeContext);
   return (
     <>
-      <p>Theme: {theme}</p>
+      <p>Theme from context: {theme}</p>
       <p style={{ backgroundColor: `${theme}` }}>
         Hello, my name is Le Nhat Duy
       </p>
