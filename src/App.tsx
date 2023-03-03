@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import RMemo from "./lesson2/RMemo";
 import Callback from "./lesson3/Callback";
 import Memo from "./lesson4/Memo";
+import Context from "./lesson5/Context";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="Rmemo" element={<RMemo />} />
         <Route path="callback" element={<Callback />} />
         <Route path="memo" element={<Memo />} />
+        <Route path="context" element={<Context />} />
       </Routes>
     </div>
   );
